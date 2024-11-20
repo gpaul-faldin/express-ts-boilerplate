@@ -1,5 +1,5 @@
 import { logger } from '@utils/logger';
-import { NextFunction, Request, Response } from 'express';
+import { Request, Response } from 'express';
 
 export class ApiError extends Error {
   statusCode: number;
@@ -10,7 +10,7 @@ export class ApiError extends Error {
   }
 }
 
-export const errorHandler = (err: Error, req: Request, res: Response, next: NextFunction) => {
+export const errorHandler = (err: Error, req: Request, res: Response) => {
   if (err instanceof ApiError) {
     logger.error(`API Error: ${err.message}`);
     return res.status(err.statusCode).json({

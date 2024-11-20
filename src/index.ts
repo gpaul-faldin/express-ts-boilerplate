@@ -1,3 +1,7 @@
+import { swaggerOptions } from '@config/swagger';
+import { errorHandler } from '@middlewares/errorHandler';
+import userRoutes from '@routes/userRoutes';
+import { logger } from '@utils/logger';
 import compression from 'compression';
 import cors from 'cors';
 import { config } from 'dotenv';
@@ -6,11 +10,6 @@ import { rateLimit } from 'express-rate-limit';
 import helmet from 'helmet';
 import swaggerJSDoc from 'swagger-jsdoc';
 import { serve, setup } from 'swagger-ui-express';
-
-import { swaggerOptions } from '@config/swagger';
-import { errorHandler } from '@middlewares/errorHandler';
-import userRoutes from '@routes/userRoutes';
-import { logger } from '@utils/logger';
 
 config();
 

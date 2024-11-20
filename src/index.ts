@@ -16,28 +16,23 @@ config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Security Middleware
 app.use(helmet());
-app.use(cors());
+app.use(cors()); // To be customized in production
 app.use(compression());
 app.use(json());
 app.use(urlencoded({ extended: true }));
 
-// Rate limiting
 const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 100, // limit each IP to 100 requests per windowMs
+  windowMs: 15 * 60 * 1000,
+  max: 100,
 });
 app.use(limiter);
 
-// Swagger Documentation
 const swaggerSpec = swaggerJSDoc(swaggerOptions);
 app.use('/api-docs', serve, setup(swaggerSpec));
 
-// Routes
 app.use('/api/users', userRoutes);
 
-// Error handling
 app.use(errorHandler);
 
 app.listen(PORT, () => {

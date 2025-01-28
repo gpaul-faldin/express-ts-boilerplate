@@ -9,5 +9,9 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "typescript.preferences.importModuleSpecifier": "non-relative",
-  "javascript.preferences.importModuleSpecifier": "non-relative"
+  "javascript.preferences.importModuleSpecifier": "non-relative",
+  "breadcrumbs.enabled": true,
+  "breadcrumbs.symbolPath": "on",
+  "editor.foldingHighlight": true,
+  "editor.showFoldingControls": "always"
 }
